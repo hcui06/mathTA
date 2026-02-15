@@ -99,7 +99,7 @@ const Workspace = () => {
         }
 
         // Debug: log all event types
-        appendLog("EVT: " + (evt.type as string));
+        // appendLog("EVT: " + (evt.type as string));
 
         if (evt.type === "conversation.item.input_audio_transcription.delta") {
           turnTranscriptRef.current += (evt.delta as string) || "";
@@ -241,8 +241,7 @@ const Workspace = () => {
           <span className="text-xs font-mono text-muted-foreground mr-2">{status}</span>
 
           {!started ? (
-            <Button size="sm" className="gap-2" onClick={start}>
-              <Phone className="h-4 w-4" />
+            <Button size="sm" className="gap-2 bg-green-600 hover:bg-green-700 text-white" onClick={start}>
               Start Session
             </Button>
           ) : (
@@ -315,17 +314,6 @@ const Workspace = () => {
             <Whiteboard canvasRef={canvasRef} className="h-full" />
           </div>
 
-          {/* Transcript display — shows what user said */}
-          {userTranscript && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="border-t border-border bg-card/50 px-4 py-3"
-            >
-              <p className="text-sm leading-relaxed font-mono text-muted-foreground">You: {userTranscript}</p>
-            </motion.div>
-          )}
         </div>
       </div>
     </div>
